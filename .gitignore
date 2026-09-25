@@ -43,3 +43,11 @@ Release/
 **/subprojects/dwarfstack-*/
 
 tools/installer/TRX_Installer/Resources/release.zip
+
+# godot artefacts
+godot/bin/
+godot/project/bin/
+*.os
+.sconsign.dblite
+
+.idea/
