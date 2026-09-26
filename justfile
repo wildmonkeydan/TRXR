@@ -50,9 +50,11 @@ _docker_run tag *args:
 image-win force="1": (_docker_build "tools/shared/docker/game-win/Dockerfile" "rrdash/trx-win" force)
 image-linux force="1": (_docker_build "tools/shared/docker/game-linux/Dockerfile" "rrdash/trx-linux" force)
 image-win-installer force="1": (_docker_build "tools/shared/docker/installer/Dockerfile" "rrdash/trx-installer" force)
+image-godot-linux force="1": (_docker_build "tools/shared/docker/godot-linux/Dockerfile" "rrdash/trx-godot-linux" force)
 
 push-image-linux: (image-linux "0") (_docker_push "rrdash/trx-linux")
 push-image-win: (image-win "0") (_docker_push "rrdash/trx-win")
+push-image-godot-linux: (image-godot-linux "0") (_docker_push "rrdash/trx-godot-linux")
 
 download-assets tr_version='all':
     tools/download_assets {{tr_version}}
@@ -80,6 +82,7 @@ lint:
 
 trx-build-linux target='debug': (image-linux "0") (_docker_run "rrdash/trx-linux" "build" "--target" target)
 trx-build-win target='debug': (image-win "0") (_docker_run "rrdash/trx-win" "build" "--target" target)
+trx-build-godot-linux target='template_debug': (image-godot-linux) (_docker_run "rrdash/trx-godot-linux" "build" "--target" target)
 
 trx-build-win-installer target='release' *args: \
     (trx-build-win target) \

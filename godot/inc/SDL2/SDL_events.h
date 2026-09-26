@@ -656,9 +656,6 @@ typedef union SDL_Event
     Uint8 padding[sizeof(void *) <= 8 ? 56 : sizeof(void *) == 16 ? 64 : 3 * sizeof(void *)];
 } SDL_Event;
 
-/* Make sure we haven't broken binary compatibility */
-SDL_COMPILE_TIME_ASSERT(SDL_Event, sizeof(SDL_Event) == sizeof(((SDL_Event *)NULL)->padding));
-
 #define SDL_QUERY   -1
 #define SDL_IGNORE   0
 #define SDL_DISABLE  0

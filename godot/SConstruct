@@ -3,7 +3,7 @@ import os
 import sys
 import subprocess
 
-from methods import print_error, get_meson_file_list
+from methods import print_error, get_meson_file_list, list_dir
 from SCons.Script import *
 
 
@@ -52,11 +52,13 @@ if trx_version == '':
 trx_lua_api_sources = get_meson_file_list("trx_lua_api_sources")
 trx_lua_script_sources = get_meson_file_list("trx_lua_script_sources")
 
-cmd = f"python3 ../tools/embed_trx_lua.py --output trx_embedded_lua.c --module-root ./lua/api --modules {" ".join(trx_lua_api_sources)} --script-root ./lua --scripts {" ".join(trx_lua_script_sources)}"
+cmd = f'python3 ../tools/embed_trx_lua.py --output trx_embedded_lua.c --module-root ./lua/api --modules {" ".join(trx_lua_api_sources)} --script-root ./lua --scripts {" ".join(trx_lua_script_sources)}'
 subprocess.run(cmd, cwd="../src", shell=True)
 
 cmd = f"python3 ../tools/generate_init --version {trx_version} -o ../src/trx_init.c"
 subprocess.run(cmd, shell=True)
+
+list_dir("/ext/include")
 
 Help(opts.GenerateHelpText(localEnv))
 
@@ -71,10 +73,10 @@ Run the following command to download godot-cpp:
 
 env = SConscript("godot-cpp/SConstruct", {"api_version": 4.7, "env": env, "customs": customs})
 
-env.Append(CPPPATH=["src/", "../src/", "inc/", "uthash/src/"])
-env.Append(CXXFLAGS="-std=c2x")
-env.Append(CFLAGS=["-Dbool=_Bool", "-Dtrue=1", "-Dfalse=0", "-Dnullptr=0x0", "-Dalignas=_Alignas",
-                   "-DPCRE2_STATIC", "-DPCRE2_CODE_UNIT_WIDTH=8"])
+env.Append(CC=["clang-20"])
+env.Append(CPPPATH=["src/", "../src/", "inc/", "/ext/include"])
+env.Append(CFLAGS=["-DPCRE2_STATIC", "-DPCRE2_CODE_UNIT_WIDTH=8", "-std=c2x",
+            "-Dbool=_Bool", "-Dtrue=1", "-Dfalse=0", "-Dalignas=_Alignas", "-Dnullptr=0x0"])
 sources = Glob("src/*.cpp") + get_meson_file_list("common_sources") + ["../src/trx_init.c", "../src/trx_embedded_lua.c"]
 
 if env["target"] in ["editor", "template_debug"]:
@@ -93,7 +95,8 @@ lib_filename = "{}{}{}{}".format(env.subst('$SHLIBPREFIX'), libname, suffix, env
 library = env.SharedLibrary(
     "bin/{}/{}".format(env['platform'], lib_filename),
     source=sources,
-    LIBS=["libavcodec.a", "libavfilter.a", "libavformat.a", "libavutil.a", "libswscale.a"]
+    LIBS=["libavcodec", "libavfilter", "libavformat", "libavutil", "libswscale"],
+    LIBPATH=["/ext/"]
 )
 
 copy = env.Install("{}/bin/{}/".format(projectdir, env["platform"]), library)

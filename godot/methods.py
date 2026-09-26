@@ -65,3 +65,6 @@ def get_meson_file_list(name) -> list:
                 if x.startswith(name):
                     start = True
     return fList
+
+def list_dir(dir):
+    print(os.listdir(dir))
