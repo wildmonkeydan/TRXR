@@ -2,6 +2,7 @@
 #include "SDL_stdinc.h"
 
 typedef struct SDL_Window SDL_Window;
+typedef void *SDL_GLContext;
 
 typedef enum SDL_WindowEventID
 {
@@ -135,3 +136,11 @@ int SDL_GetCurrentDisplayMode(int displayIndex, SDL_DisplayMode * mode);
 int SDL_GetDisplayBounds(int displayIndex, SDL_Rect * rect);
 
 int SDL_GL_SetAttribute(SDL_GLattr attr, int value);
+void SDL_GL_ResetAttributes(void);
+SDL_GLContext SDL_GL_CreateContext(SDL_Window * window);
+void SDL_GL_DeleteContext(SDL_GLContext context);
+int SDL_GL_MakeCurrent(SDL_Window * window,
+                       SDL_GLContext context);
+SDL_bool SDL_GL_SetSwapInterval(int interval);
+void SDL_GL_SwapWindow(SDL_Window * window);
+int SDL_GL_GetSwapInterval(void);

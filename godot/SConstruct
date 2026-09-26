@@ -58,8 +58,6 @@ subprocess.run(cmd, cwd="../src", shell=True)
 cmd = f"python3 ../tools/generate_init --version {trx_version} -o ../src/trx_init.c"
 subprocess.run(cmd, shell=True)
 
-list_dir("/ext/include")
-
 Help(opts.GenerateHelpText(localEnv))
 
 env = localEnv.Clone()
@@ -90,6 +88,7 @@ env.Append(CFLAGS=["-DPCRE2_STATIC", "-DPCRE2_CODE_UNIT_WIDTH=8", "-std=c2x",
       '-fno-omit-frame-pointer',
       '-DDWST_STATIC',
       '-DPCRE2_STATIC',
+      '-DMESON_BUILD',
       '-DPCRE2_CODE_UNIT_WIDTH=8',])
 sources = Glob("src/*.cpp") + get_meson_file_list("common_sources") + ["../src/trx_init.c", "../src/trx_embedded_lua.c"]
 
@@ -109,8 +108,8 @@ lib_filename = "{}{}{}{}".format(env.subst('$SHLIBPREFIX'), libname, suffix, env
 library = env.SharedLibrary(
     "bin/{}/{}".format(env['platform'], lib_filename),
     source=sources,
-    LIBS=["libavcodec", "libavfilter", "libavformat", "libavutil", "libswscale"],
-    LIBPATH=["/ext/libs/"]
+    LIBS=["libavcodec", "libavfilter", "libavformat", "libavutil", "libswscale", "libpcre2-8", "libswresample"],
+    LIBPATH=["/ext/lib"]
 )
 
 copy = env.Install("{}/bin/{}/".format(projectdir, env["platform"]), library)
