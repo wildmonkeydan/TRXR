@@ -16,3 +16,8 @@ SDL_Scancode SDL_GetScancodeFromName(const char *name);
 const char* SDL_GetKeyName(SDL_Keycode key);
 const char* SDL_GetScancodeName(SDL_Scancode scancode);
 SDL_Scancode SDL_GetScancodeFromKey(SDL_Keycode key);
+SDL_Keymod SDL_GetModState(void);
+
+SDL_bool SDL_HasClipboardText(void);
+char * SDL_GetClipboardText(void);
+int SDL_SetClipboardText(const char *text);

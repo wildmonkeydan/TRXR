@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdalign.h>
+#include <stdio.h>
 
 // Partially lifted from the original SDL_stdinc.h, as such the original hear is provided
 /*
@@ -246,6 +247,13 @@ typedef uint64_t Uint64;
 #endif /* SDL_PLATFORM_LINUX */
 #endif /* !SDL_BYTEORDER */
 
+typedef struct SDL_Rect
+{
+    int x, y;
+    int w, h;
+} SDL_Rect;
+
 void* SDL_memset(void *dst, int c, size_t len);
+void SDL_free(void *mem);
 
 const char * SDL_getenv(const char *name);

@@ -3,6 +3,10 @@
 #include "SDL_keyboard.h"
 #include "SDL_touch.h"
 
+/* General keyboard/mouse state definitions */
+#define SDL_RELEASED    0
+#define SDL_PRESSED 1
+
 /**
  * The types of events that can be delivered.
  */
@@ -685,3 +689,5 @@ typedef union SDL_Event
 Uint8 SDL_EventState(Uint32 type, int state);
 /* @} */
 #define SDL_GetEventState(type) SDL_EventState(type, SDL_QUERY)
+
+int SDL_PollEvent(SDL_Event * event);

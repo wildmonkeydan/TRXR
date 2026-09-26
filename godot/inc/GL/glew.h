@@ -1,4 +1,6 @@
 #pragma once
+#include <stddef.h>
+#include <stdint.h>
 
 typedef unsigned int GLenum;
 typedef unsigned char GLboolean;
@@ -829,3 +831,402 @@ typedef GLintptr GLvdpauSurfaceNV;
 #ifndef GL_VERSION_1_0
 #define GL_VERSION_1_0 1
 #endif
+
+
+void glUniform1f(GLint location,
+ 	GLfloat v0);
+void glUniform2f(GLint location,
+ 	GLfloat v0,
+ 	GLfloat v1);
+void glUniform3f(GLint location,
+ 	GLfloat v0,
+ 	GLfloat v1,
+ 	GLfloat v2);
+void glUniform4f(GLint location,
+ 	GLfloat v0,
+ 	GLfloat v1,
+ 	GLfloat v2,
+ 	GLfloat v3);
+void glUniform1i(GLint location,
+ 	GLint v0);
+void glUniform2i(GLint location,
+ 	GLint v0,
+ 	GLint v1);
+void glUniform3i(GLint location,
+ 	GLint v0,
+ 	GLint v1,
+ 	GLint v2);
+void glUniform4i(GLint location,
+ 	GLint v0,
+ 	GLint v1,
+ 	GLint v2,
+ 	GLint v3);
+void glUniform1ui(GLint location,
+ 	GLuint v0);
+void glUniform2ui(GLint location,
+ 	GLuint v0,
+ 	GLuint v1);
+void glUniform3ui(GLint location,
+ 	GLuint v0,
+ 	GLuint v1,
+ 	GLuint v2);
+void glUniform4ui(GLint location,
+ 	GLuint v0,
+ 	GLuint v1,
+ 	GLuint v2,
+ 	GLuint v3);
+void glUniform1fv(GLint location,
+ 	GLsizei count,
+ 	const GLfloat *value);
+void glUniform2fv(GLint location,
+ 	GLsizei count,
+ 	const GLfloat *value);
+void glUniform3fv(GLint location,
+ 	GLsizei count,
+ 	const GLfloat *value);
+void glUniform4fv(GLint location,
+ 	GLsizei count,
+ 	const GLfloat *value);
+void glUniform1iv(GLint location,
+ 	GLsizei count,
+ 	const GLint *value);
+void glUniform2iv(GLint location,
+ 	GLsizei count,
+ 	const GLint *value);
+void glUniform3iv(GLint location,
+ 	GLsizei count,
+ 	const GLint *value);
+void glUniform4iv(GLint location,
+ 	GLsizei count,
+ 	const GLint *value);
+void glUniform1uiv(GLint location,
+ 	GLsizei count,
+ 	const GLuint *value);
+void glUniform2uiv(GLint location,
+ 	GLsizei count,
+ 	const GLuint *value);
+void glUniform3uiv(GLint location,
+ 	GLsizei count,
+ 	const GLuint *value);
+void glUniform4uiv(GLint location,
+ 	GLsizei count,
+ 	const GLuint *value);
+void glUniformMatrix2fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix3fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix4fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix2x3fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix3x2fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix2x4fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix4x2fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix3x4fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+void glUniformMatrix4x3fv(GLint location,
+ 	GLsizei count,
+ 	GLboolean transpose,
+ 	const GLfloat *value);
+
+void glGetActiveUniform(GLuint program,
+	 GLuint index,
+	 GLsizei bufSize,
+	 GLsizei *length,
+	 GLint *size,
+	 GLenum *type,
+	 GLchar *name);
+void glGetActiveUniformsiv(GLuint program,
+	 GLsizei uniformCount,
+	 const GLuint *uniformIndices,
+	 GLenum pname,
+	 GLint *params);
+void glGetActiveUniformName(GLuint program,
+	 GLuint uniformIndex,
+	 GLsizei bufSize,
+	 GLsizei *length,
+	 GLchar *uniformName);
+void glGetActiveUniformBlockiv(GLuint program,
+	 GLuint uniformBlockIndex,
+	 GLenum pname,
+	 GLint *params);
+void glGetActiveUniformBlockName(GLuint program,
+	 GLuint uniformBlockIndex,
+	 GLsizei bufSize,
+	 GLsizei *length,
+	 GLchar *uniformBlockName);
+GLint glGetUniformLocation(GLuint program,
+	 const GLchar *name);
+GLuint glGetUniformBlockIndex(GLuint program,
+	 const GLchar *uniformBlockName);
+
+void glUniformBlockBinding(GLuint program,
+	 GLuint uniformBlockIndex,
+	 GLuint uniformBlockBinding);
+
+
+void glGetIntegerv(GLenum pname,
+	 GLint * data);
+void glGetIntegeri_v(GLenum target,
+	 GLuint index,
+	 GLint * data);
+
+void glClear(GLbitfield mask);
+void glClearColor(GLfloat red,
+	 GLfloat green,
+	 GLfloat blue,
+	 GLfloat alpha);
+
+void glEnable(GLenum cap);
+void glDisable(GLenum cap);
+void glEnablei(GLenum cap,
+     GLuint index);
+void glDisablei(GLenum cap,
+     GLuint index);
+GLboolean glIsEnabled(GLenum cap);
+
+void glPolygonMode(GLenum face,
+	 GLenum mode);
+void glPolygonOffset(GLfloat factor,
+	 GLfloat units);
+
+void glPixelStorei(GLenum pname,
+	 GLint param);
+
+void glBindBuffer(GLenum target, GLuint buffer);
+void glBindBufferBase(GLenum target,
+	 GLuint index,
+	 GLuint buffer);
+void glGenBuffers(GLsizei n,
+     GLuint * buffers);
+void glDeleteBuffers(	GLsizei n,
+      const GLuint * buffers);
+void glBufferData(GLenum target,
+     GLsizeiptr size,
+     const void * data,
+     GLenum usage);
+void glNamedBufferData(GLuint buffer,
+     GLsizeiptr size,
+     const void *data,
+     GLenum usage);
+void glBufferSubData(GLenum target,
+     GLintptr offset,
+     GLsizeiptr size,
+     const void * data);
+void glNamedBufferSubData(GLuint buffer,
+     GLintptr offset,
+     GLsizeiptr size,
+     const void *data);
+
+void glVertexAttribI1ui(GLuint index,
+	 GLuint v0);
+void glVertexAttrib1f(GLuint index,
+	 GLfloat v0);
+void glVertexAttrib2f(GLuint index,
+	 GLfloat v0,
+	 GLfloat v1);
+void glVertexAttrib3f(GLuint index,
+	 GLfloat v0,
+	 GLfloat v1,
+	 GLfloat v2);
+void glVertexAttrib4f(GLuint index,
+	 GLfloat v0,
+	 GLfloat v1,
+	 GLfloat v2,
+	 GLfloat v3);
+
+void glBindVertexArray(GLuint array);
+void glGenVertexArrays(GLsizei n,
+     GLuint *arrays);
+void glDeleteVertexArrays(GLsizei n,
+      const GLuint *arrays);
+
+void glEnableVertexAttribArray(GLuint index);
+void glDisableVertexAttribArray(GLuint index);
+void glEnableVertexArrayAttrib(GLuint vaobj,
+      GLuint index);
+void glDisableVertexArrayAttrib(GLuint vaobj,
+      GLuint index);
+
+void glTexImage2D(GLenum target,
+	 GLint level,
+	 GLint internalformat,
+	 GLsizei width,
+	 GLsizei height,
+	 GLint border,
+	 GLenum format,
+	 GLenum type,
+	 const void * data);
+void glCopyTexImage2D(GLenum target,
+	 GLint level,
+	 GLenum internalformat,
+	 GLint x,
+	 GLint y,
+	 GLsizei width,
+	 GLsizei height,
+	 GLint border);
+void glTexSubImage2D(GLenum target,
+	 GLint level,
+	 GLint xoffset,
+	 GLint yoffset,
+	 GLsizei width,
+	 GLsizei height,
+	 GLenum format,
+	 GLenum type,
+	 const void * pixels);
+void glCopyTexSubImage2D(GLenum target,
+	 GLint level,
+	 GLint xoffset,
+	 GLint yoffset,
+	 GLint x,
+	 GLint y,
+	 GLsizei width,
+	 GLsizei height);
+
+void glTexSubImage3D(GLenum target,
+	 GLint level,
+	 GLint xoffset,
+	 GLint yoffset,
+	 GLint zoffset,
+	 GLsizei width,
+	 GLsizei height,
+	 GLsizei depth,
+	 GLenum format,
+	 GLenum type,
+	 const void * pixels);
+void glTexStorage3D(GLenum target,
+	 GLsizei levels,
+	 GLenum internalformat,
+	 GLsizei width,
+	 GLsizei height,
+	 GLsizei depth);
+
+void glTexParameterf(GLenum target,
+	 GLenum pname,
+	 GLfloat param);
+void glTexParameteri(GLenum target,
+	 GLenum pname,
+	 GLint param);
+
+#define GL_SAMPLER_BINDING 0x8919
+void glBindSampler(GLuint unit,
+	 GLuint sampler);
+void glGenSamplers(GLsizei n,
+	 GLuint *samplers);
+void glDeleteSamplers(GLsizei n,
+	 const GLuint * samplers);
+void glSamplerParameterf(GLuint sampler,
+	 GLenum pname,
+	 GLfloat param);
+void glSamplerParameteri(GLuint sampler,
+	 GLenum pname,
+	 GLint param);
+
+#define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
+#define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF
+void glGenTextures(GLsizei n,
+     GLuint * textures);
+void glDeleteTextures(GLsizei n,
+	 const GLuint * textures);
+void glActiveTexture(GLenum texture);
+void glBindTexture(GLenum target,
+	 GLuint texture);
+
+void glLineWidth(GLfloat width);
+
+void glVertexAttribPointer(GLuint index,
+     GLint size,
+     GLenum type,
+     GLboolean normalized,
+     GLsizei stride,
+     const void * pointer);
+void glVertexAttribIPointer(GLuint index,
+     GLint size,
+     GLenum type,
+     GLsizei stride,
+     const void * pointer);
+void glVertexAttribLPointer(GLuint index,
+     GLint size,
+     GLenum type,
+     GLsizei stride,
+     const void * pointer);
+
+void glDrawElements(GLenum mode,
+      GLsizei count,
+      GLenum type,
+      const void * indices);
+void glDrawElementsBaseVertex(GLenum mode,
+      GLsizei count,
+      GLenum type,
+      void *indices,
+      GLint basevertex);
+void glDrawArrays(GLenum mode,
+	 GLint first,
+	 GLsizei count);
+
+void glViewport(GLint x,
+	 GLint y,
+	 GLsizei width,
+	 GLsizei height);
+void glScissor(GLint x,
+	 GLint y,
+	 GLsizei width,
+	 GLsizei height);
+
+
+void glBlitFramebuffer(GLint srcX0,
+	 GLint srcY0,
+	 GLint srcX1,
+	 GLint srcY1,
+	 GLint dstX0,
+	 GLint dstY0,
+	 GLint dstX1,
+	 GLint dstY1,
+	 GLbitfield mask,
+	 GLenum filter);
+void glBindFramebuffer(GLenum target,
+	 GLuint framebuffer);
+
+
+void glDepthFunc(GLenum func);
+void glBlendFunc(GLenum sfactor,
+	 GLenum dfactor);
+
+
+void glDepthMask(GLboolean flag);
+void glColorMask(GLboolean red,
+      GLboolean green,
+      GLboolean blue,
+      GLboolean alpha);
+void glColorMaski(GLuint buf,
+      GLboolean red,
+      GLboolean green,
+      GLboolean blue,
+      GLboolean alpha);
+
+void glBlendEquation(GLenum mode);
+void glBlendEquationi(GLuint buf,
+	 GLenum mode);
+
+void glGetProgramiv(GLuint program,
+	 GLenum pname,
+	 GLint *params);

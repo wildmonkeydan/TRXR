@@ -93,6 +93,7 @@ SDL_GameControllerType SDL_GameControllerTypeForIndex(int joystick_index);
 SDL_bool SDL_IsGameController(int joystick_index);
 SDL_GameController* SDL_GameControllerOpen(int joystick_index);
 void SDL_GameControllerClose(SDL_GameController* gamecontroller);
-const char* SDL_GameControllerGetStringForButton(SDL_GameControllerButton button);
 SDL_GameControllerButton SDL_GameControllerGetButtonFromString(const char *str);
 SDL_GameControllerAxis SDL_GameControllerGetAxisFromString(const char *str);
+const char* SDL_GameControllerGetStringForAxis(SDL_GameControllerAxis axis);
+const char* SDL_GameControllerGetStringForButton(SDL_GameControllerButton button);
