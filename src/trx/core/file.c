@@ -19,6 +19,16 @@
     #include <unistd.h>
 #endif
 
+int ftruncate(int fildes, off_t length)
+{
+    return 0;
+}
+
+int fileno(FILE *stream)
+{
+    return 0;
+}
+
 #define M_DISK_WINDOW 65536
 
 #define M_DEFINE_READ(name_, type_)                                            \

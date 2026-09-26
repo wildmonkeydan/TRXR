@@ -1,5 +1,7 @@
 #pragma once
 #include "SDL_stdinc.h"
+#include "SDL_keyboard.h"
+#include "SDL_touch.h"
 
 /**
  * The types of events that can be delivered.
@@ -184,7 +186,7 @@ typedef struct SDL_KeyboardEvent
     Uint8 repeat;       /**< Non-zero if this is a key repeat */
     Uint8 padding2;
     Uint8 padding3;
-    //SDL_Keysym keysym;  /**< The key that was pressed or released */
+    SDL_Keysym keysym;  /**< The key that was pressed or released */
 } SDL_KeyboardEvent;
 
 #define SDL_TEXTEDITINGEVENT_TEXT_SIZE (32)
@@ -488,8 +490,8 @@ typedef struct SDL_TouchFingerEvent
 {
     Uint32 type;        /**< SDL_FINGERMOTION or SDL_FINGERDOWN or SDL_FINGERUP */
     Uint32 timestamp;   /**< In milliseconds, populated using SDL_GetTicks() */
-    //SDL_TouchID touchId; /**< The touch device id */
-    //SDL_FingerID fingerId;
+    SDL_TouchID touchId; /**< The touch device id */
+    SDL_FingerID fingerId;
     float x;            /**< Normalized in the range 0...1 */
     float y;            /**< Normalized in the range 0...1 */
     float dx;           /**< Normalized in the range -1...1 */
