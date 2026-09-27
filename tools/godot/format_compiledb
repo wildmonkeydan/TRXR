@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import json
+import os
+
+with open("compile_commands.json", "r+", encoding='utf-8') as file:
+    data = json.load(file)
+    for source in data:
+        source['command'] = source['command'].replace('/app', os.getcwd())
+        source['directory'] = source['directory'].replace('/app', os.getcwd())
+        source['file'] = source['file'].replace('/app', os.getcwd())
+        source['output'] = source['output'].replace('/app', os.getcwd())
+    file.seek(0)        # <--- should reset file position to the beginning.
+    json.dump(data, file, indent=4)
+    file.truncate()     # remove remaining part

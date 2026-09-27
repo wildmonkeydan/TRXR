@@ -82,7 +82,10 @@ lint:
 
 trx-build-linux target='debug': (image-linux "0") (_docker_run "rrdash/trx-linux" "build" "--target" target)
 trx-build-win target='debug': (image-win "0") (_docker_run "rrdash/trx-win" "build" "--target" target)
-trx-build-godot-linux target='template_debug': (image-godot-linux) (_docker_run "rrdash/trx-godot-linux" "build" "--target" target)
+trx-build-godot-linux target='template_debug': \
+    (image-godot-linux) \
+    (_docker_run "rrdash/trx-godot-linux" "build" "--target" target)
+    tools/godot/format_compiledb
 
 trx-build-win-installer target='release' *args: \
     (trx-build-win target) \
