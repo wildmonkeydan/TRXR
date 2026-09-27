@@ -115,7 +115,7 @@ class BuildCommand(BaseCommand):
 
     def run(self, args: argparse.Namespace) -> None:
         options = BuildOptions.from_args(args)
-        check_call(["scons", f"platform={options.platform}", f"target={options.target}"], cwd=options.build_root)
+        check_call(["scons", f"platform={options.platform}", f"target={options.target}", "compiledb=yes", "compiledb_file=/app/compile_commands.json"], cwd=options.build_root)
 
 
 class PackageCommand(BaseCommand):

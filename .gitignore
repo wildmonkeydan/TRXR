@@ -46,7 +46,8 @@ tools/installer/TRX_Installer/Resources/release.zip
 
 # godot artefacts
 godot/bin/
-godot/project/bin/
+godot/project/bin/linux
+godot/project/bin/android
 *.os
 .sconsign.dblite
 

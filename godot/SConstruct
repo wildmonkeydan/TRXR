@@ -74,7 +74,7 @@ env = SConscript("godot-cpp/SConstruct", {"api_version": 4.7, "env": env, "custo
 env.Replace(CXX="clang++-20")
 env.Replace(CC="clang-20")
 env.Append(CPPPATH=["src/", "../src/", "inc/", "/ext/include"])
-env.Append(CFLAGS=["-DPCRE2_STATIC", "-DPCRE2_CODE_UNIT_WIDTH=8", "-std=c2x",
+env.Append(CFLAGS=["-std=c2x",
       '-Wshadow',
       '-Wno-unused',
       '-Wno-unused-parameter',
