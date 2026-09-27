@@ -4,6 +4,3 @@
 [submodule "godot/godot-cpp"]
 	path = godot/godot-cpp
 	url = https://github.com/godotengine/godot-cpp.git
-[submodule "godot/uthash"]
-	path = godot/uthash
-	url = https://github.com/troydhanson/uthash.git
